@@ -1,11 +1,11 @@
 package com.example.utilities
 
 import io.ktor.client.*
+import io.ktor.client.call.*
 import io.ktor.client.engine.cio.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
-import io.ktor.util.*
-import io.ktor.utils.io.*
+import kotlinx.coroutines.runBlocking
 
 class HttpClient {
     companion object {
@@ -15,12 +15,11 @@ class HttpClient {
         private val client = HttpClient(CIO)
     }
 
-    suspend fun getClient(): HttpResponse {
-        val response: HttpResponse = client.get(host + endPoint){
-            setBody("Body content")
-        }
+    suspend fun getClient() = runBlocking {
+        val httpResponse: HttpResponse = client.get(host + endPoint)
+        val stringBody: String = httpResponse.body()
         client.close()
 
-        return response
+        return@runBlocking stringBody
     }
 }
