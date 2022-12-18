@@ -10,12 +10,12 @@ import kotlinx.coroutines.runBlocking
 class HttpClient {
     companion object {
         private const val host = "https://trickyword-justjump-default-rtdb.europe-west1.firebasedatabase.app"
-        private const val endPoint = "/TrickyWord_BooksLisDB.json"
-
-        private val client = HttpClient(CIO)
     }
 
-    suspend fun getClient() = runBlocking {
+    suspend fun getClientForBooks() = runBlocking {
+        val endPoint = "/TrickyWord_BooksLisDB.json"
+        val client = HttpClient(CIO)
+
         val httpResponse: HttpResponse = client.get(host + endPoint)
         val stringBody: String = httpResponse.body()
         client.close()
