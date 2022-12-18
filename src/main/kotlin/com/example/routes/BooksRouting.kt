@@ -3,6 +3,7 @@ package com.example.routes
 import com.example.utilities.HttpClient
 import com.example.utilities.filterBooks
 import com.example.utilities.getBookNumber
+import com.example.utilities.sortByBooks
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.response.*
@@ -21,9 +22,7 @@ fun Route.booksRouting() = runBlocking {
 
         // function to get all the word order by books
         get("sort"){
-
-            HttpClient().getClientForBooks()
-
+            sortByBooks(HttpClient().getClientForBooks())
             call.respondText("sort")
         }
 
