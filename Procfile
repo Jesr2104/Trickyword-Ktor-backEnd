@@ -1,0 +1,1 @@
+web: build/install/trickywords/bin/trickywords
