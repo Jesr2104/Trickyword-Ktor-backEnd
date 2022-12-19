@@ -10,9 +10,9 @@ import kotlinx.coroutines.runBlocking
 
 fun Route.booksRouting() = runBlocking {
     route("/books") {
-        // function to get all the word of a specific book
+        // function to get all the books
         get("") {
-            call.respondText(HttpClient().getClientForBooks())
+            call.respondText(HttpClient().getClientForWordOnBooks())
         }
 
         // -> /books/active
@@ -24,7 +24,7 @@ fun Route.booksRouting() = runBlocking {
         // -> /books/sort
         // function to get all the word order by books
         get("sort"){
-            call.respondText(sortByBooks(HttpClient().getClientForBooks()))
+            call.respondText(sortByBooks(HttpClient().getClientForWordOnBooks()))
         }
 
         // -> /books/{bookNumber}
@@ -37,7 +37,7 @@ fun Route.booksRouting() = runBlocking {
                         status = HttpStatusCode.BadRequest
                     )
             launch {
-                call.respondText(filterBooks(HttpClient().getClientForBooks(), bookNumber))
+                call.respondText(filterBooks(HttpClient().getClientForWordOnBooks(), bookNumber))
             }
         }
     }

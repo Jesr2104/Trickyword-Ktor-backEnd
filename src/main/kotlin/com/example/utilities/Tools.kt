@@ -29,13 +29,33 @@ fun filterBooks(jsonString: String, bookNumber: Int): String {
     return getJsonStringFromArray(newFilterList)
 }
 
-// function to sort by book
+// function to sort by books
 fun sortByBooks(jsonString: String): String {
     val booksList = getArrayFromJsonString<TrickyWord>(jsonString)
 
     booksList.sortBy { it.nBook }
     booksList.sortBy { it.nLesson }
     return getJsonStringFromArray(booksList)
+}
+
+// function to sort by words
+fun sortByWordAlphabetically(jsonString: String): String {
+    val wordList = getArrayFromJsonString<TrickyWord>(jsonString)
+
+    wordList.sortBy { it.trickyWord.lowercase() }
+    return getJsonStringFromArray(wordList)
+}
+
+// function to search a specific word
+fun getSpecificWord(jsonString: String, word: String): String? {
+    val wordList = getArrayFromJsonString<TrickyWord>(jsonString)
+
+    wordList.forEach {
+        if (it.trickyWord.lowercase().compareTo(word) == 0){
+            return getJsonStringFromArray(arrayListOf(it))
+        }
+    }
+    return null
 }
 
 //function to gel all the actives books
