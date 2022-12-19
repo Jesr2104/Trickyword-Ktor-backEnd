@@ -16,11 +16,13 @@ fun Route.wordsRouting() = runBlocking {
             call.respondText(HttpClient().getClientForWordOnBooks())
         }
 
+        // -> /Words/sort
         // function to get que word order by alphabetically
         get("sort") {
             call.respondText(sortByWordAlphabetically(HttpClient().getClientForWordOnBooks()))
         }
 
+        // -> /words/{word}
         // function to get the specific word
         get("{word?}") {
             val word =
