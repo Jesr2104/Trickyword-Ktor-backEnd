@@ -1,9 +1,6 @@
 package com.example.routes
 
-import com.example.utilities.HttpClient
-import com.example.utilities.filterBooks
-import com.example.utilities.getBookNumber
-import com.example.utilities.sortByBooks
+import com.example.utilities.*
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.response.*
@@ -15,17 +12,22 @@ fun Route.booksRouting() = runBlocking {
     route("/books") {
         // function to get all the word of a specific book
         get("") {
-            val request = HttpClient()
-            val jsonString = request.getClientForBooks()
-            call.respondText(jsonString)
+            call.respondText(HttpClient().getClientForBooks())
         }
 
+        // -> /books/active
+        // function to get the list of active books
+        get("active"){
+            call.respondText(getActiveBooks(HttpClient().getClientForActiveBooks()))
+        }
+
+        // -> /books/sort
         // function to get all the word order by books
         get("sort"){
-            sortByBooks(HttpClient().getClientForBooks())
-            call.respondText("sort")
+            call.respondText(sortByBooks(HttpClient().getClientForBooks()))
         }
 
+        // -> /books/{bookNumber}
         // function to get all the word of a specific book
         get("{bookNumber?}") {
             val bookNumber =

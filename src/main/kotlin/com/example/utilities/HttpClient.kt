@@ -23,4 +23,15 @@ class HttpClient {
 
         return@runBlocking stringBody
     }
+
+    suspend fun getClientForActiveBooks() = runBlocking{
+        val endPoint = "/ActiveBooks.json"
+        val client = HttpClient(CIO)
+
+        val httpResponse: HttpResponse = client.get(host + endPoint + prettyPrint)
+        val stringBody: String = httpResponse.body()
+        client.close()
+
+        return@runBlocking stringBody
+    }
 }
