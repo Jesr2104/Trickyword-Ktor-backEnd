@@ -13,7 +13,7 @@ class HttpClient {
         private const val prettyPrint = "?print=pretty"
     }
 
-    // client for books and words
+    // client for endpoint words and words
     suspend fun getClientForWordOnBooks() = runBlocking {
         val endPoint = "/TrickyWord_BooksLisDB.json"
         val client = HttpClient(CIO)
@@ -25,6 +25,7 @@ class HttpClient {
         return@runBlocking stringBody
     }
 
+    // client for endpoint active books
     suspend fun getClientForActiveBooks() = runBlocking{
         val endPoint = "/ActiveBooks.json"
         val client = HttpClient(CIO)

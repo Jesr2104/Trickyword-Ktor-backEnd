@@ -5,7 +5,6 @@ val logback_version: String by project
 plugins {
     kotlin("jvm") version "1.7.22"
     id("io.ktor.plugin") version "2.2.1"
-    id("org.jetbrains.kotlin.plugin.serialization") version "1.7.22"
     id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
@@ -20,10 +19,15 @@ application {
 
 repositories {
     mavenCentral()
+    //maven { url = uri("https://maven.pkg.jetbrains.space/public/p/ktor/eap") }
 }
 
-tasks.create("stage") {
-    dependsOn("installDist")
+tasks {
+    shadowJar {
+        manifest {
+            attributes(Pair("Main-Class", "com.example.ApplicationKt"))
+        }
+    }
 }
 
 dependencies {
