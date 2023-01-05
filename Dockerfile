@@ -19,7 +19,7 @@ RUN echo "Step 2...Done"
 # Create the shadowJar and create a route to it.
 
 RUN bash gradlew shadowJar
-ARG JARFILE=src/build/libs/*-all.jar
+ARG JARFILE=build/libs/*-all.jar
 
 RUN echo "Step 3...Done"
 # -------------------------------------------------------------------
