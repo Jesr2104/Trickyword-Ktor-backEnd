@@ -9,8 +9,8 @@ import io.ktor.server.netty.*
 fun main() {
     embeddedServer(
         Netty,
-        port = 8080,
-        host = "0.0.0.0",
+        port = 80,
+        host = "127.0.0.1",
         module = Application::module
     ).start(wait = true)
 }
