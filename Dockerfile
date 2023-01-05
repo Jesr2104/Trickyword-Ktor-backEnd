@@ -25,7 +25,7 @@ RUN echo "Step 3...Done"
 # new name on the root directory. don't user a internal route to avoid
 # error o problem to find the file . jar
 
-COPY *-all.jar trickyWords-Server.jar
+COPY build/libs/*-all.jar trickyWords-Server.jar
 
 RUN echo "Step 4...Done"
 # -------------------------------------------------------------------
