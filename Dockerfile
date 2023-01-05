@@ -1,7 +1,5 @@
 FROM openjdk:11-slim as build
 
-ENV DEBIAN_FRONTEND=noninteractive TZ=Europa/Amsterdam
-
 RUN echo "Step 1...Done"
 # -------------------------------------------------------------------
 # Configure de system on the container and do
@@ -19,7 +17,7 @@ RUN echo "Step 2...Done"
 # Create the shadowJar and create a route to it.
 
 RUN bash gradlew shadowJar
-ARG JARFILE=build/libs/*-all.jar
+# ARG JARFILE=build/libs/*-all.jar
 
 RUN echo "Step 3...Done"
 # -------------------------------------------------------------------
@@ -27,7 +25,7 @@ RUN echo "Step 3...Done"
 # new name on the root directory. don't user a internal route to avoid
 # error o problem to find the file . jar
 
-COPY ${JARFILE} trickyWords-Server.jar
+COPY *-all.jar trickyWords-Server.jar
 
 RUN echo "Step 4...Done"
 # -------------------------------------------------------------------
