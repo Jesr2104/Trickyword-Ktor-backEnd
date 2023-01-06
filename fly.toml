@@ -1,4 +1,6 @@
 # fly.toml file generated for trickywords on 2023-01-06T22:20:14Z
+# https://fly.io/apps/trickywords -> provide of the service
+# https://trickywords.fly.dev/ -> Web of the server
 
 app = "trickywords"
 kill_signal = "SIGINT"
