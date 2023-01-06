@@ -39,16 +39,17 @@
 # # run the the server
 #
 # ENTRYPOINT ["java","-jar","trickyWords-Server.jar"]
-
+# --no-daemon
 
 FROM gradle:7-jdk11 AS build
 COPY --chown=gradle:gradle . /home/gradle/src
 WORKDIR /home/gradle/src
-RUN gradle buildFatJar --no-daemon
+RUN gradle buildFatJar
+# RUN gradlew shadowJar
 
 FROM openjdk:11
 EXPOSE 80:8080
-RUN mkdir /app
-COPY --from=build /home/gradle/src/build/libs/*.jar /app/ktor-docker-sample.jar
-ENTRYPOINT ["java","-jar","/app/ktor-docker-sample.jar"]
+# RUN mkdir /app
+COPY --from=build /home/gradle/src/build/libs/*.jar ktor-sample.jar
+ENTRYPOINT ["java","-jar","ktor-sample.jar"]
 
