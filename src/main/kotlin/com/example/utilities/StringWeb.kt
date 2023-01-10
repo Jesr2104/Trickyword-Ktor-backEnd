@@ -55,7 +55,7 @@ fun getStringWeb(): String {
             "    <td>Get all the information of the books</td>" +
             "  </tr>" +
             "  <tr>" +
-            "    <td>/info/active</td>" +
+            "    <td>/info/active-book</td>" +
             "    <td>Get all the active books</td>" +
             "  </tr>" +
             "  <tr>" +
