@@ -1,6 +1,6 @@
 package com.example.models
 
-data class Questions(
+data class QuestionsDataModel(
     val correctAnswer: String,
     val optionA: String,
     val optionB: String,

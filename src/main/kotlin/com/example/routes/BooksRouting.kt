@@ -15,12 +15,6 @@ fun Route.booksRouting() = runBlocking {
             call.respondText(HttpClient().getClientForWordOnBooks())
         }
 
-        // -> /books/active
-        // function to get the list of active books
-        get("active"){
-            call.respondText(getActiveBooks(HttpClient().getClientForActiveBooks()))
-        }
-
         // -> /books/sort
         // function to get all the word order by books
         get("sort"){

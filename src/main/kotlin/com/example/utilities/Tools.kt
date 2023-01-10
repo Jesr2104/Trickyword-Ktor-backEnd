@@ -1,7 +1,7 @@
 package com.example.utilities
 
-import com.example.models.ActiveBooks
-import com.example.models.TrickyWord
+import com.example.models.InfoBookDataModel
+import com.example.models.TrickyWordDataModel
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -18,8 +18,8 @@ inline fun <reified T> getArrayFromJsonString(jsonString: String): ArrayList<T> 
 
 // function to get all the word from the specific book
 fun filterBooks(jsonString: String, bookNumber: Int): String {
-    val newFilterList: ArrayList<TrickyWord> = arrayListOf()
-    val booksList = getArrayFromJsonString<TrickyWord>(jsonString)
+    val newFilterList: ArrayList<TrickyWordDataModel> = arrayListOf()
+    val booksList = getArrayFromJsonString<TrickyWordDataModel>(jsonString)
 
     booksList.forEach {
         if (it.nBook == bookNumber) {
@@ -31,16 +31,15 @@ fun filterBooks(jsonString: String, bookNumber: Int): String {
 
 // function to sort by books
 fun sortByBooks(jsonString: String): String {
-    val booksList = getArrayFromJsonString<TrickyWord>(jsonString)
+    val booksList = getArrayFromJsonString<TrickyWordDataModel>(jsonString)
 
-    booksList.sortBy { it.nBook }
     booksList.sortBy { it.nLesson }
     return getJsonStringFromArray(booksList)
 }
 
 // function to sort by words
 fun sortByWordAlphabetically(jsonString: String): String {
-    val wordList = getArrayFromJsonString<TrickyWord>(jsonString)
+    val wordList = getArrayFromJsonString<TrickyWordDataModel>(jsonString)
 
     wordList.sortBy { it.trickyWord.lowercase() }
     return getJsonStringFromArray(wordList)
@@ -48,7 +47,7 @@ fun sortByWordAlphabetically(jsonString: String): String {
 
 // function to search a specific word
 fun getSpecificWord(jsonString: String, word: String): String? {
-    val wordList = getArrayFromJsonString<TrickyWord>(jsonString)
+    val wordList = getArrayFromJsonString<TrickyWordDataModel>(jsonString)
 
     wordList.forEach {
         if (it.trickyWord.lowercase().compareTo(word) == 0){
@@ -60,8 +59,8 @@ fun getSpecificWord(jsonString: String, word: String): String? {
 
 //function to gel all the actives books
 fun getActiveBooks(jsonString: String): String {
-    val activeBooksList: ArrayList<ActiveBooks> = arrayListOf()
-    val list = getArrayFromJsonString<ActiveBooks>(jsonString)
+    val activeBooksList: ArrayList<InfoBookDataModel> = arrayListOf()
+    val list = getArrayFromJsonString<InfoBookDataModel>(jsonString)
 
     list.forEach {
         if (it.active){
@@ -69,4 +68,16 @@ fun getActiveBooks(jsonString: String): String {
         }
     }
     return getJsonStringFromArray(activeBooksList)
+}
+
+// function to search a specific word
+fun getSpecificBookInformation(jsonString: String, bookNumber: Int): String? {
+    val wordList = getArrayFromJsonString<InfoBookDataModel>(jsonString)
+
+    wordList.forEach {
+        if (it.bookNumber == bookNumber){
+            return getJsonStringFromArray(arrayListOf(it))
+        }
+    }
+    return null
 }

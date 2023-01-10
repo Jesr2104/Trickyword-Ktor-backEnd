@@ -1,5 +1,6 @@
 package com.example.plugins
 
+import com.example.routes.bookInfoRouting
 import com.example.routes.booksRouting
 import com.example.routes.wordsRouting
 import io.ktor.server.application.*
@@ -11,6 +12,7 @@ fun Application.configureRouting() {
         get("/") {
             call.respondText("Hello this the BackEnd-TrickyWord!")
         }
+        bookInfoRouting()
         booksRouting()
         wordsRouting()
     }
