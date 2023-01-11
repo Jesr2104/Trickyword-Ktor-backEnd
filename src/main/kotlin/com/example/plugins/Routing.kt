@@ -13,7 +13,7 @@ fun Application.configureRouting() {
     routing {
         get("/") {
             call.respondText(
-                "Hello this the BackEnd-TrickyWord!" + getStringWeb(),
+                "Hello this is BackEnd-TrickyWord!" + getStringWeb(),
                 ContentType.Text.Html
             )
         }
