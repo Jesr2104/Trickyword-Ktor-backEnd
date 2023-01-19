@@ -2,6 +2,10 @@
 
 This project is a backend written with Kotlin multiplanform using the Ktor tool. Ktor allows us to write and configure a backend server that can manage all HTTP responses and return information in JSON to be used as an API in our applications.
 
+For the deployment of the server, docker has been used to create a server image and a container where the server is serving the Api in Fly.io
+
+<img src="https://github.com/Jesr2104/Trickyword-Ktor-backEnd/blob/fccd15f6d5c7878c5b187235f710e425f284d4e5/back-end-Response.png" width="400">
+
 ## Getting Started
 
 To get started, you will need to have the following installed on your machine:
@@ -21,10 +25,7 @@ The following endpoints are available in the API:
 ## Built With
 - Kotlin
 - Ktor
-
-## Contributing
-
-If you would like to contribute to this project, please create a pull request and it will be reviewed by the project maintainers.
+- Json
 
 ## License
 This project is licensed under the [MIT License](LICENSE)
