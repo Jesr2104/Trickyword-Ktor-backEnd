@@ -1,6 +1,6 @@
 # Trickyword-Ktor-backEnd
 
-This project is a backend written with Kotlin multiplanform using the Ktor tool. Ktor allows us to write and configure a backend server that can manage all HTTP responses and return information in JSON to be used as an API in our applications.
+This project is a backend written with Kotlin multiplatform using the Ktor tool. Ktor allows us to write and configure a backend server that can manage all HTTP responses and return information in JSON to be used as an API in our applications.
 
 For the deployment of the server, docker has been used to create a server image and a container where the server is serving the Api in Fly.io
 
